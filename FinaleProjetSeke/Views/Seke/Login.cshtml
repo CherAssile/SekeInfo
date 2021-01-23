@@ -1,0 +1,93 @@
+﻿
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../styles/style.css">
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../styles/bootstrap-4.1.2/popper.js"></script>
+    <script src="../styles/bootstrap-4.1.2/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="stylesheet" type="text/css" href="../styles/bootstrap-4.1.2/bootstrap.min.css">
+   
+
+</head>
+<body>
+    @*<div class="foo">
+            <span class="letter" data-letter="S">S</span>
+            <span class="letter" data-letter="E">E</span>
+            <span class="letter" data-letter="K">K</span>
+            <span class="letter" data-letter="E">E</span>
+        </div>*@
+    <div class="foo">
+        <span class="letter" data-letter="-">-</span>
+        
+    </div>
+
+    @if (ViewBag.message == null && ViewBag.tentative == "ok")
+    {
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Attention !</strong> Verifier Bien vos Coordonnees, Le Compte risque d'etre bloque Apres 3reprises!
+        </div>
+    }
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <strong> @ViewBag.block</strong> 
+</div>
+
+    <div class="petitForm">
+        <img src="../images/lg2.png" width="500" height="440"></img>
+        </br>
+        </br>
+        <div class="pf2">
+            <h1>Se Connecter</h1>
+            <div id="con">
+                <form method="post">
+                    <label for="fname" style="left:100px;">Nom d'utilisateur</label></br>
+                    <input type="text" name="user" placeholder="Veuillez Entrer votre Nom Utilisateur" autocomplete="off"></br>
+
+                    <label for="lname">Mot de passe</label></br>
+                    <input type="password" name="mdp" placeholder="Veuillez Entrer Votre Mot De Passe" autocomplete="off"></br>
+
+                    <input type="submit" value="Connexion" name="statut"><br />
+                    @*<input type="submit" value="Employes?" name="statut">*@
+
+
+                </form>
+                <h2><a target="_blank" onclick="removeElementcon();resetElementins()">Mot De Passse Oublié?</a></h2>
+            </div>
+            <div id="ins">
+                <form action="">
+                    <label for="fname" style="left:100px;">Nom</label></br>
+                    <input type="text" id="fname" name="firstname" placeholder="Veuillez Entrer Votre Email"></br>
+
+
+                    <input type="submit" value="Envoyer">
+                    <h2><a target="_blank" color="red">Un Code Sera Envoye!</a></h2>
+                </form>
+                <u><h2><a target="_blank" onclick="removeElementins();resetElementcon()">Se connecter?</a></h2></u>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById("ins").style.display = "none";
+    function removeElementcon() {
+        document.getElementById("con").style.display = "none";
+    }
+    function removeElementins() {
+        document.getElementById("ins").style.display = "none";
+    }
+    function resetElementcon() {
+        document.getElementById("con").style.display = "block";
+    }
+    function resetElementins() {
+        document.getElementById("ins").style.display = "block";
+    }
+</script>
+</html>

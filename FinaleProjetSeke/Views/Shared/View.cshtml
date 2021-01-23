@@ -1,0 +1,75 @@
+﻿@model IEnumerable<FinaleProjetSeke.Models.Produit>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodeProduit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrixAchat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantiteStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RabaisVente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RabaisLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateSortie)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodeProduit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrixAchat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantiteStock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Photo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RabaisVente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RabaisLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateSortie)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

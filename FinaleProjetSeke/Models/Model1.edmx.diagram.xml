@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="94f35c2dbe4e44c4aa791badfd2fe290" Name="Diagram1">
+        <EntityTypeShape EntityType="SekeDATAModel.Employe" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="SekeDATAModel.location" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SekeDATAModel.Produit" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SekeDATAModel.Reservation" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SekeDATAModel.Utilisateur" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SekeDATAModel.Vente" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SekeDATAModel.EmployesSupprime" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SekeDATAModel.ProduitSupprime" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SekeDATAModel.UtilisateurSupprime" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="SekeDATAModel.FK_Vent_" ManuallyRouted="false" />
+        <AssociationConnector Association="SekeDATAModel.FK_Vente_Utilisate" ManuallyRouted="false" />
+        <AssociationConnector Association="SekeDATAModel.FK_Vente_ProduitLoc" ManuallyRouted="false" />
+        <AssociationConnector Association="SekeDATAModel.FK_Vente_UtilisateurLoc" ManuallyRouted="false" />
+        <AssociationConnector Association="SekeDATAModel.FK_Vente_Produi" ManuallyRouted="false" />
+        <AssociationConnector Association="SekeDATAModel.FK_Vente_Produit" ManuallyRouted="false" />
+        <AssociationConnector Association="SekeDATAModel.FK_Vente_Utilisateu" ManuallyRouted="false" />
+        <AssociationConnector Association="SekeDATAModel.FK_Vente_Utilisateur" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

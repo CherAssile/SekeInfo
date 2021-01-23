@@ -1,0 +1,797 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SekeDATAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employes">
+          <Key>
+            <PropertyRef Name="CodeEmployes" />
+          </Key>
+          <Property Name="CodeEmployes" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rue" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ville" Type="nvarchar" MaxLength="50" />
+          <Property Name="Province" Type="nvarchar" MaxLength="50" />
+          <Property Name="Statut" Type="int" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateSuppression" Type="date" />
+          <Property Name="MotifSuppression" Type="text" />
+          <Property Name="DateEmbauche" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SACKO\SOURCE\REPOS\FINALEPROJETSEKE\FINALEPROJETSEKE\APP_DATA\SEKEDATA.MDF.dbo.EmployesSupprimes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EmployesSupprimes">
+          <Key>
+            <PropertyRef Name="CodeEmployes" />
+          </Key>
+          <Property Name="CodeEmployes" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rue" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ville" Type="nvarchar" MaxLength="50" />
+          <Property Name="Province" Type="nvarchar" MaxLength="50" />
+          <Property Name="Statut" Type="int" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateSuppression" Type="date" />
+          <Property Name="MotifSuppression" Type="text" />
+          <Property Name="DateEmbauche" Type="date" />
+        </EntityType>
+        <EntityType Name="location">
+          <Key>
+            <PropertyRef Name="CodeProduit" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="DateLocation" />
+          </Key>
+          <Property Name="CodeProduit" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateLocation" Type="date" Nullable="false" />
+          <Property Name="DateRetour" Type="date" />
+          <Property Name="CodeEmployes" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrixLocation" Type="float" />
+          <Property Name="QuantiteLocation" Type="int" />
+          <Property Name="Rabais" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Produit">
+          <Key>
+            <PropertyRef Name="CodeProduit" />
+          </Key>
+          <Property Name="CodeProduit" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrixAchat" Type="float" />
+          <Property Name="QuantiteStock" Type="int" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="RabaisVente" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RabaisLocation" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DateSortie" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SACKO\SOURCE\REPOS\FINALEPROJETSEKE\FINALEPROJETSEKE\APP_DATA\SEKEDATA.MDF.dbo.ProduitSupprimes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProduitSupprimes">
+          <Key>
+            <PropertyRef Name="CodeProduit" />
+          </Key>
+          <Property Name="CodeProduit" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrixAchat" Type="float" />
+          <Property Name="QuantiteStock" Type="int" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="RabaisVente" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RabaisLocation" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DateSortie" Type="date" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="CodeProduit" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="DateReservation" />
+          </Key>
+          <Property Name="CodeProduit" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateReservation" Type="date" Nullable="false" />
+          <Property Name="CodeEmployes" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrixReserve" Type="float" />
+          <Property Name="QuantiteReserve" Type="int" />
+          <Property Name="Rabais" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rue" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ville" Type="nvarchar" MaxLength="50" />
+          <Property Name="Province" Type="nvarchar" MaxLength="50" />
+          <Property Name="Statut" Type="int" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="MotifSuppression" Type="text" />
+          <Property Name="DateSuppression" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SACKO\SOURCE\REPOS\FINALEPROJETSEKE\FINALEPROJETSEKE\APP_DATA\SEKEDATA.MDF.dbo.UtilisateurSupprimes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UtilisateurSupprimes">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rue" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ville" Type="nvarchar" MaxLength="50" />
+          <Property Name="Province" Type="nvarchar" MaxLength="50" />
+          <Property Name="Statut" Type="int" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="MotifSuppression" Type="text" />
+          <Property Name="DateSuppression" Type="date" />
+        </EntityType>
+        <EntityType Name="Vente">
+          <Key>
+            <PropertyRef Name="CodeProduit" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="DateVente" />
+          </Key>
+          <Property Name="CodeProduit" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateVente" Type="date" Nullable="false" />
+          <Property Name="CodeEmployes" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrixVente" Type="float" />
+          <Property Name="QuantiteVente" Type="int" />
+          <Property Name="Rabais" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <Association Name="FK_Vent_">
+          <End Role="Employes" Type="Self.Employes" Multiplicity="0..1" />
+          <End Role="location" Type="Self.location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employes">
+              <PropertyRef Name="CodeEmployes" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="CodeEmployes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vente_Produi">
+          <End Role="Produit" Type="Self.Produit" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produit">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="CodeProduit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vente_Produit">
+          <End Role="Produit" Type="Self.Produit" Multiplicity="1" />
+          <End Role="Vente" Type="Self.Vente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produit">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="Vente">
+              <PropertyRef Name="CodeProduit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vente_ProduitLoc">
+          <End Role="Produit" Type="Self.Produit" Multiplicity="1" />
+          <End Role="location" Type="Self.location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produit">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="CodeProduit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vente_Utilisate">
+          <End Role="Employes" Type="Self.Employes" Multiplicity="0..1" />
+          <End Role="Vente" Type="Self.Vente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employes">
+              <PropertyRef Name="CodeEmployes" />
+            </Principal>
+            <Dependent Role="Vente">
+              <PropertyRef Name="CodeEmployes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vente_Utilisateu">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vente_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Vente" Type="Self.Vente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Vente">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vente_UtilisateurLoc">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="location" Type="Self.location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SekeDATAModelStoreContainer">
+          <EntitySet Name="Employes" EntityType="Self.Employes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="location" EntityType="Self.location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Produit" EntityType="Self.Produit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vente" EntityType="Self.Vente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployesSupprimes" EntityType="Self.EmployesSupprimes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EmployesSupprimes].[CodeEmployes] AS [CodeEmployes], 
+    [EmployesSupprimes].[Nom] AS [Nom], 
+    [EmployesSupprimes].[Prenom] AS [Prenom], 
+    [EmployesSupprimes].[Rue] AS [Rue], 
+    [EmployesSupprimes].[Ville] AS [Ville], 
+    [EmployesSupprimes].[Province] AS [Province], 
+    [EmployesSupprimes].[Statut] AS [Statut], 
+    [EmployesSupprimes].[Photo] AS [Photo], 
+    [EmployesSupprimes].[Email] AS [Email], 
+    [EmployesSupprimes].[DateSuppression] AS [DateSuppression], 
+    [EmployesSupprimes].[MotifSuppression] AS [MotifSuppression], 
+    [EmployesSupprimes].[DateEmbauche] AS [DateEmbauche]
+    FROM [dbo].[EmployesSupprimes] AS [EmployesSupprimes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProduitSupprimes" EntityType="Self.ProduitSupprimes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProduitSupprimes].[CodeProduit] AS [CodeProduit], 
+    [ProduitSupprimes].[Nom] AS [Nom], 
+    [ProduitSupprimes].[PrixAchat] AS [PrixAchat], 
+    [ProduitSupprimes].[QuantiteStock] AS [QuantiteStock], 
+    [ProduitSupprimes].[Photo] AS [Photo], 
+    [ProduitSupprimes].[Note] AS [Note], 
+    [ProduitSupprimes].[RabaisVente] AS [RabaisVente], 
+    [ProduitSupprimes].[RabaisLocation] AS [RabaisLocation], 
+    [ProduitSupprimes].[DateSortie] AS [DateSortie]
+    FROM [dbo].[ProduitSupprimes] AS [ProduitSupprimes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UtilisateurSupprimes" EntityType="Self.UtilisateurSupprimes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UtilisateurSupprimes].[Code] AS [Code], 
+    [UtilisateurSupprimes].[Nom] AS [Nom], 
+    [UtilisateurSupprimes].[Prenom] AS [Prenom], 
+    [UtilisateurSupprimes].[Rue] AS [Rue], 
+    [UtilisateurSupprimes].[Ville] AS [Ville], 
+    [UtilisateurSupprimes].[Province] AS [Province], 
+    [UtilisateurSupprimes].[Statut] AS [Statut], 
+    [UtilisateurSupprimes].[Photo] AS [Photo], 
+    [UtilisateurSupprimes].[Email] AS [Email], 
+    [UtilisateurSupprimes].[MotifSuppression] AS [MotifSuppression], 
+    [UtilisateurSupprimes].[DateSuppression] AS [DateSuppression]
+    FROM [dbo].[UtilisateurSupprimes] AS [UtilisateurSupprimes]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Vent_" Association="Self.FK_Vent_">
+            <End Role="Employes" EntitySet="Employes" />
+            <End Role="location" EntitySet="location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vente_Produi" Association="Self.FK_Vente_Produi">
+            <End Role="Produit" EntitySet="Produit" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vente_Produit" Association="Self.FK_Vente_Produit">
+            <End Role="Produit" EntitySet="Produit" />
+            <End Role="Vente" EntitySet="Vente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vente_ProduitLoc" Association="Self.FK_Vente_ProduitLoc">
+            <End Role="Produit" EntitySet="Produit" />
+            <End Role="location" EntitySet="location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vente_Utilisate" Association="Self.FK_Vente_Utilisate">
+            <End Role="Employes" EntitySet="Employes" />
+            <End Role="Vente" EntitySet="Vente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vente_Utilisateu" Association="Self.FK_Vente_Utilisateu">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vente_Utilisateur" Association="Self.FK_Vente_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Vente" EntitySet="Vente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vente_UtilisateurLoc" Association="Self.FK_Vente_UtilisateurLoc">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="location" EntitySet="location" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SekeDATAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employe">
+          <Key>
+            <PropertyRef Name="CodeEmployes" />
+          </Key>
+          <Property Name="CodeEmployes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ville" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Statut" Type="Int32" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateSuppression" Type="DateTime" Precision="0" />
+          <Property Name="MotifSuppression" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateEmbauche" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="locations" Relationship="Self.FK_Vent_" FromRole="Employes" ToRole="location" />
+          <NavigationProperty Name="Ventes" Relationship="Self.FK_Vente_Utilisate" FromRole="Employes" ToRole="Vente" />
+        </EntityType>
+        <EntityType Name="location">
+          <Key>
+            <PropertyRef Name="CodeProduit" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="DateLocation" />
+          </Key>
+          <Property Name="CodeProduit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateLocation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateRetour" Type="DateTime" Precision="0" />
+          <Property Name="CodeEmployes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrixLocation" Type="Double" />
+          <Property Name="QuantiteLocation" Type="Int32" />
+          <Property Name="Rabais" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Employe" Relationship="Self.FK_Vent_" FromRole="location" ToRole="Employes" />
+          <NavigationProperty Name="Produit" Relationship="Self.FK_Vente_ProduitLoc" FromRole="location" ToRole="Produit" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK_Vente_UtilisateurLoc" FromRole="location" ToRole="Utilisateur" />
+        </EntityType>
+        <EntityType Name="Produit">
+          <Key>
+            <PropertyRef Name="CodeProduit" />
+          </Key>
+          <Property Name="CodeProduit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrixAchat" Type="Double" />
+          <Property Name="QuantiteStock" Type="Int32" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RabaisVente" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RabaisLocation" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DateSortie" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="locations" Relationship="Self.FK_Vente_ProduitLoc" FromRole="Produit" ToRole="location" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK_Vente_Produi" FromRole="Produit" ToRole="Reservation" />
+          <NavigationProperty Name="Ventes" Relationship="Self.FK_Vente_Produit" FromRole="Produit" ToRole="Vente" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="CodeProduit" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="DateReservation" />
+          </Key>
+          <Property Name="CodeProduit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateReservation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CodeEmployes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrixReserve" Type="Double" />
+          <Property Name="QuantiteReserve" Type="Int32" />
+          <Property Name="Rabais" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Produit" Relationship="Self.FK_Vente_Produi" FromRole="Reservation" ToRole="Produit" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK_Vente_Utilisateu" FromRole="Reservation" ToRole="Utilisateur" />
+        </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ville" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Statut" Type="Int32" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MotifSuppression" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateSuppression" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="locations" Relationship="Self.FK_Vente_UtilisateurLoc" FromRole="Utilisateur" ToRole="location" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK_Vente_Utilisateu" FromRole="Utilisateur" ToRole="Reservation" />
+          <NavigationProperty Name="Ventes" Relationship="Self.FK_Vente_Utilisateur" FromRole="Utilisateur" ToRole="Vente" />
+        </EntityType>
+        <EntityType Name="Vente">
+          <Key>
+            <PropertyRef Name="CodeProduit" />
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="DateVente" />
+          </Key>
+          <Property Name="CodeProduit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateVente" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CodeEmployes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrixVente" Type="Double" />
+          <Property Name="QuantiteVente" Type="Int32" />
+          <Property Name="Rabais" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Employe" Relationship="Self.FK_Vente_Utilisate" FromRole="Vente" ToRole="Employes" />
+          <NavigationProperty Name="Produit" Relationship="Self.FK_Vente_Produit" FromRole="Vente" ToRole="Produit" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.FK_Vente_Utilisateur" FromRole="Vente" ToRole="Utilisateur" />
+        </EntityType>
+        <EntityType Name="EmployesSupprime">
+          <Key>
+            <PropertyRef Name="CodeEmployes" />
+          </Key>
+          <Property Name="CodeEmployes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ville" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Statut" Type="Int32" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateSuppression" Type="DateTime" Precision="0" />
+          <Property Name="MotifSuppression" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateEmbauche" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="ProduitSupprime">
+          <Key>
+            <PropertyRef Name="CodeProduit" />
+          </Key>
+          <Property Name="CodeProduit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrixAchat" Type="Double" />
+          <Property Name="QuantiteStock" Type="Int32" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RabaisVente" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RabaisLocation" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DateSortie" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="UtilisateurSupprime">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ville" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Statut" Type="Int32" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MotifSuppression" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateSuppression" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="FK_Vent_">
+          <End Role="Employes" Type="Self.Employe" Multiplicity="0..1" />
+          <End Role="location" Type="Self.location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employes">
+              <PropertyRef Name="CodeEmployes" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="CodeEmployes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vente_Utilisate">
+          <End Role="Employes" Type="Self.Employe" Multiplicity="0..1" />
+          <End Role="Vente" Type="Self.Vente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employes">
+              <PropertyRef Name="CodeEmployes" />
+            </Principal>
+            <Dependent Role="Vente">
+              <PropertyRef Name="CodeEmployes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vente_ProduitLoc">
+          <End Role="Produit" Type="Self.Produit" Multiplicity="1" />
+          <End Role="location" Type="Self.location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produit">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="CodeProduit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vente_UtilisateurLoc">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="location" Type="Self.location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vente_Produi">
+          <End Role="Produit" Type="Self.Produit" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produit">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="CodeProduit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vente_Produit">
+          <End Role="Produit" Type="Self.Produit" Multiplicity="1" />
+          <End Role="Vente" Type="Self.Vente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produit">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="Vente">
+              <PropertyRef Name="CodeProduit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vente_Utilisateu">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vente_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Vente" Type="Self.Vente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Vente">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SekeDATAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employes" EntityType="Self.Employe" />
+          <EntitySet Name="locations" EntityType="Self.location" />
+          <EntitySet Name="Produits" EntityType="Self.Produit" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+          <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateur" />
+          <EntitySet Name="Ventes" EntityType="Self.Vente" />
+          <EntitySet Name="EmployesSupprimes" EntityType="Self.EmployesSupprime" />
+          <EntitySet Name="ProduitSupprimes" EntityType="Self.ProduitSupprime" />
+          <EntitySet Name="UtilisateurSupprimes" EntityType="Self.UtilisateurSupprime" />
+          <AssociationSet Name="FK_Vent_" Association="Self.FK_Vent_">
+            <End Role="Employes" EntitySet="Employes" />
+            <End Role="location" EntitySet="locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vente_Utilisate" Association="Self.FK_Vente_Utilisate">
+            <End Role="Employes" EntitySet="Employes" />
+            <End Role="Vente" EntitySet="Ventes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vente_ProduitLoc" Association="Self.FK_Vente_ProduitLoc">
+            <End Role="Produit" EntitySet="Produits" />
+            <End Role="location" EntitySet="locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vente_UtilisateurLoc" Association="Self.FK_Vente_UtilisateurLoc">
+            <End Role="Utilisateur" EntitySet="Utilisateurs" />
+            <End Role="location" EntitySet="locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vente_Produi" Association="Self.FK_Vente_Produi">
+            <End Role="Produit" EntitySet="Produits" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vente_Produit" Association="Self.FK_Vente_Produit">
+            <End Role="Produit" EntitySet="Produits" />
+            <End Role="Vente" EntitySet="Ventes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vente_Utilisateu" Association="Self.FK_Vente_Utilisateu">
+            <End Role="Utilisateur" EntitySet="Utilisateurs" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vente_Utilisateur" Association="Self.FK_Vente_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateurs" />
+            <End Role="Vente" EntitySet="Ventes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SekeDATAModelStoreContainer" CdmEntityContainer="SekeDATAEntities">
+          <EntitySetMapping Name="Employes">
+            <EntityTypeMapping TypeName="SekeDATAModel.Employe">
+              <MappingFragment StoreEntitySet="Employes">
+                <ScalarProperty Name="CodeEmployes" ColumnName="CodeEmployes" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Rue" ColumnName="Rue" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Statut" ColumnName="Statut" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateSuppression" ColumnName="DateSuppression" />
+                <ScalarProperty Name="MotifSuppression" ColumnName="MotifSuppression" />
+                <ScalarProperty Name="DateEmbauche" ColumnName="DateEmbauche" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locations">
+            <EntityTypeMapping TypeName="SekeDATAModel.location">
+              <MappingFragment StoreEntitySet="location">
+                <ScalarProperty Name="CodeProduit" ColumnName="CodeProduit" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DateLocation" ColumnName="DateLocation" />
+                <ScalarProperty Name="DateRetour" ColumnName="DateRetour" />
+                <ScalarProperty Name="CodeEmployes" ColumnName="CodeEmployes" />
+                <ScalarProperty Name="PrixLocation" ColumnName="PrixLocation" />
+                <ScalarProperty Name="QuantiteLocation" ColumnName="QuantiteLocation" />
+                <ScalarProperty Name="Rabais" ColumnName="Rabais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produits">
+            <EntityTypeMapping TypeName="SekeDATAModel.Produit">
+              <MappingFragment StoreEntitySet="Produit">
+                <ScalarProperty Name="CodeProduit" ColumnName="CodeProduit" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="PrixAchat" ColumnName="PrixAchat" />
+                <ScalarProperty Name="QuantiteStock" ColumnName="QuantiteStock" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="RabaisVente" ColumnName="RabaisVente" />
+                <ScalarProperty Name="RabaisLocation" ColumnName="RabaisLocation" />
+                <ScalarProperty Name="DateSortie" ColumnName="DateSortie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="SekeDATAModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="CodeProduit" ColumnName="CodeProduit" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DateReservation" ColumnName="DateReservation" />
+                <ScalarProperty Name="CodeEmployes" ColumnName="CodeEmployes" />
+                <ScalarProperty Name="PrixReserve" ColumnName="PrixReserve" />
+                <ScalarProperty Name="QuantiteReserve" ColumnName="QuantiteReserve" />
+                <ScalarProperty Name="Rabais" ColumnName="Rabais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilisateurs">
+            <EntityTypeMapping TypeName="SekeDATAModel.Utilisateur">
+              <MappingFragment StoreEntitySet="Utilisateur">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Rue" ColumnName="Rue" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Statut" ColumnName="Statut" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MotifSuppression" ColumnName="MotifSuppression" />
+                <ScalarProperty Name="DateSuppression" ColumnName="DateSuppression" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ventes">
+            <EntityTypeMapping TypeName="SekeDATAModel.Vente">
+              <MappingFragment StoreEntitySet="Vente">
+                <ScalarProperty Name="CodeProduit" ColumnName="CodeProduit" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DateVente" ColumnName="DateVente" />
+                <ScalarProperty Name="CodeEmployes" ColumnName="CodeEmployes" />
+                <ScalarProperty Name="PrixVente" ColumnName="PrixVente" />
+                <ScalarProperty Name="QuantiteVente" ColumnName="QuantiteVente" />
+                <ScalarProperty Name="Rabais" ColumnName="Rabais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployesSupprimes">
+            <EntityTypeMapping TypeName="SekeDATAModel.EmployesSupprime">
+              <MappingFragment StoreEntitySet="EmployesSupprimes">
+                <ScalarProperty Name="CodeEmployes" ColumnName="CodeEmployes" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Rue" ColumnName="Rue" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Statut" ColumnName="Statut" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateSuppression" ColumnName="DateSuppression" />
+                <ScalarProperty Name="MotifSuppression" ColumnName="MotifSuppression" />
+                <ScalarProperty Name="DateEmbauche" ColumnName="DateEmbauche" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProduitSupprimes">
+            <EntityTypeMapping TypeName="SekeDATAModel.ProduitSupprime">
+              <MappingFragment StoreEntitySet="ProduitSupprimes">
+                <ScalarProperty Name="CodeProduit" ColumnName="CodeProduit" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="PrixAchat" ColumnName="PrixAchat" />
+                <ScalarProperty Name="QuantiteStock" ColumnName="QuantiteStock" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="RabaisVente" ColumnName="RabaisVente" />
+                <ScalarProperty Name="RabaisLocation" ColumnName="RabaisLocation" />
+                <ScalarProperty Name="DateSortie" ColumnName="DateSortie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UtilisateurSupprimes">
+            <EntityTypeMapping TypeName="SekeDATAModel.UtilisateurSupprime">
+              <MappingFragment StoreEntitySet="UtilisateurSupprimes">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Rue" ColumnName="Rue" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Statut" ColumnName="Statut" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MotifSuppression" ColumnName="MotifSuppression" />
+                <ScalarProperty Name="DateSuppression" ColumnName="DateSuppression" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

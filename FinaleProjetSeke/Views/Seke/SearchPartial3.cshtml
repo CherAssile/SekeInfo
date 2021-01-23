@@ -1,0 +1,49 @@
+﻿@model IEnumerable<FinaleProjetSeke.Reservation>
+@{
+    ViewBag.Title = "PartialView";
+}
+
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <div class="products">
+
+            <div class="container">
+
+                <div class="row justify-content-md-center">
+
+                    <div class="col-md-auto">
+                        <div class="product">
+                            <div class="carde" style="background-color:lightblue;">
+                                @*<img src="../images/@item.Photo" alt="AC" style="width:800%;">*@
+                                <h1>@(item.NomProduit)</h1><h1>@(item.NumeroR)</h1>
+                                <p class="title">Ce Produit est en reservation</p>
+                                <p style="color: black;">@item.Nom recevra son produit le : </p>
+                                <div style="margin: 24px 0;">
+                                    <
+                                    <a href="#"><i class="fa fa-mail-forward">@(item.DateRecuperation)</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    }
+}
+
+else
+{
+    <center>
+        <p class="alert alert-danger">
+           Pas de reservationavec ces coordonnees!
+        </p>
+    </center>
+
+}

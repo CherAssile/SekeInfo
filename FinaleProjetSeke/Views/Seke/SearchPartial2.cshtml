@@ -1,0 +1,50 @@
+﻿@model IEnumerable<FinaleProjetSeke.location>
+@{
+    ViewBag.Title = "PartialView";
+}
+
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <div class="products">
+
+            <div class="container">
+
+                <div class="row justify-content-md-center">
+
+                    <div class="col-md-auto">
+                        <div class="product">
+                            <div class="carde" style="background-color:lightblue;">
+                                @*<img src="../images/@item.Photo" alt="AC" style="width:800%;">*@
+                                <h1>@(item.NomProduit)</h1>@*<h1>@(item.Prenom)</h1>*@
+                                <p class="title">Chef d'équipe</p>
+                                <p style="color: black;">Institut Teccart</p>
+                                <div style="margin: 24px 0;">
+                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-mail-forward">Envoyer Mail</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    }
+}
+
+else
+{
+    <center>
+        <p class="alert alert-danger">
+            Pas d'utilisateur avec ces coordonnes!
+        </p>
+    </center>
+
+}

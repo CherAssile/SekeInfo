@@ -1,0 +1,189 @@
+﻿@model IEnumerable<FinaleProjetSeke.Reservation>
+@{
+    ViewBag.Title = "PartialView";
+}
+
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <div class="container d-flex justify-content-center mt-50 mb-50" id="testbody">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header bg-transparent header-elements-inline">
+                            <h6 class="card-title">Seke-Informatique</h6>
+                            <div class="header-elements"> <button type="button" class="btn btn-light btn-sm"><i class="fa fa-file mr-2"></i> Save</button> <button type="button" class="btn btn-light btn-sm ml-3"><i class="fa fa-print mr-2"></i> Print</button> </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="mb-4 pull-left">
+                                        <h5>Fait par L'Employes : </h5>
+                                        <h6> <u><strong>@item.CodeEmployes</strong></u></h6>
+                                        <h6> De L'entreprise </h6>
+                                        <h6><u><strong>Seke Informatique</strong></u></h6>
+                                        <ul class="list list-unstyled mb-0 text-left">
+                                            <li><strong>7925 cote st-luc</strong></li>
+                                            <li><strong>Canada, Montreal</strong></li>
+                                            <li><strong>514-757-2894</strong></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-4 ">
+                                        <div class="text-sm-right">
+                                            <h4>Numero de Reservation : @item.NumeroR</h4>
+                                            <ul class="invoice-color pt-lg-3 p-lg-2">
+                                                <li>**********************************************************************************</li>
+                                                <li>Date De Reservation: <span class="font-weight-semibold"> @item.DateReservation</span></li>
+                                                <li>Date De Recuperation: <span class="font-weight-semibold">@item.DateRecuperation</span></li>
+                                                <li>Date De Retour: <span class="font-weight-semibold">@item.DateRetour</span></li>
+                                                <li>***********************************************************************************</li>
+                                                <h10>*Si le produit n'est pas disponible ce jour, la reservation serait gratuite!</h10>
+                                                <br />
+                                                <h10ft>*Si le produit n'est pas retourné a son jour, un montant de 3% du prix total serait ajoute par jour! Apres une semaine, votre compte serait desactive</h10ft>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-md-flex flex-md-wrap">
+                                <div class="mb-4 mb-md-2 text-left">
+                                    <span class="text-muted">***************************************:</span>
+                                    <ul class="list list-unstyled mb-0">
+
+                                        <li><span class="font-weight-semibold">Destine a :</span></li>
+                                        <li>@item.Nom</li>
+                                        <li>@item.Adresse</li>
+                                        <li>Montreal, Canada Qc</li>
+                                        <li>@item.Telephone</li>
+
+                                    </ul>
+                                </div>
+                                <div class="mb-2 ml-auto">
+                                    <span class="text-muted">Details de paiement</span>
+                                    <div class="d-flex flex-wrap wmin-md-400">
+                                        <ul class="list list-unstyled mb-0 text-left">
+                                            <li>
+                                                <h5 class="my-2">TOTAL:</h5>
+                                            </li>
+                                            <li>Nom de Votre Bamque:</li>
+                                            <li>Pays:</li>
+                                            <li>Ville:</li>
+                                            <li>NumeroCarte:</li>
+                                            <li>Numero De Suivi De votre Produit:</li>
+                                        </ul>
+                                        <ul class="list list-unstyled text-right mb-0 ml-auto">
+                                            <li>
+                                                <h5 class="font-weight-semibold my-2">$@item.Ttc</h5>
+                                            </li>
+                                            <li><span class="font-weight-semibold">RBC BANQUE</span></li>
+                                            <li>Canada</li>
+                                            <li>Montreal</li>
+                                            <li>***********5148</li>
+                                            <li>@item.NumeroR</li>
+                                            <li><span class="font-weight-semibold">Vous Pouvez annuler Votre Reservation</span></li>
+                                            <li><span class="font-weight-semibold">Apres les 3 premiers jours de la date de reservation</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-lg">
+                                <thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>prix</th>
+                                        <th>quantite</th>
+                                        <th>Rabais Membre</th>
+
+
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span class="text-muted">@item.NomProduit</span>
+                                        </td>
+                                        <td>@item.PrixReserve</td>
+                                        <td>@item.QuantiteReserve</td>
+                                        <td>@item.Rabais</td>
+                                        <td><span class="font-weight-semibold">@item.Montant</span></td>
+                                    </tr>
+                                    @*<tr>
+                                            <td>
+                                                <h6 class="mb-0">Template for desnging the arts</h6> <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
+                                            </td>
+                                            <td>$140</td>
+                                            <td>100</td>
+                                            <td><span class="font-weight-semibold">$240</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h6 class="mb-0">Technical support international</h6> <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
+                                            </td>
+                                            <td>$250</td>
+                                            <td>$250</td>
+                                            <td><span class="font-weight-semibold">$500</span></td>
+                                        </tr>*@
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-md-flex flex-md-wrap">
+                                <div class="pt-2 mb-3 wmin-md-400 ml-auto">
+                                    <h6 class="mb-3 text-left">Total due</h6>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <th class="text-left">Subtotal:</th>
+                                                    <td class="text-right">@item.Montant $</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-left">Tax: <span class="font-weight-normal">(15%)</span></th>
+                                                    <td class="text-right">@item.Taxe %</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-left">Total:</th>
+                                                    <td class="text-right text-primary">
+                                                        <h5 class="font-weight-semibold">@item.Ttc $</h5>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="text-right mt-3"> <button type="button" onclick="showAlert();" class="btn btn-primary"><b><i class="fa fa-paper-plane-o mr-1"></i></b>Envoyer Facture Via Email</button> </div>
+                                    @*<button value="showAlert" onclick="showAlert();"> Show Alert</button>*@
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    }
+}
+else
+{
+    <center>
+        <p class="alert alert-danger">
+            Pas d'utilisateur avec ces coordonnes!
+        </p>
+    </center>
+
+}

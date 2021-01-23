@@ -1,0 +1,419 @@
+﻿
+@model IEnumerable<FinaleProjetSeke.Reservation>
+    @{ 
+        Layout = null;
+    }
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../styles/css.css">
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/bootstrap-4.1.2/bootstrap.min.css">
+    <link href="../plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="../styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="../styles/responsive.css">
+</head>
+
+<body>
+
+    <div class="menu">
+
+        <!-- Search -->
+        <div class="menu_search">
+            <form action="#" id="menu_search_form" class="menu_search_form">
+                <input type="text" class="search_input" placeholder="Item" required="required">
+                <button class="menu_search_button"><img src="../images/search.png" alt=""></button>
+
+            </form>
+            <div id="google_translate_element"></div>
+        </div>
+        <!-- Navigation -->
+        <div class="menu_nav">
+            <ul>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Gestion de Produits
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="@Url.Action("AjoutProduit", "Seke")">Inserer Un nouveau Produit</a>
+                        <a class="dropdown-item" href="@Url.Action("MajProduitProduit", "Seke")">Modifier Un Produit</a>
+                        <a class="dropdown-item" href="@Url.Action("DeleteProduit", "Seke")">Supprimer Un Produit</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Gestion des Utilisateurs
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="@Url.Action("Inscription", "Seke")">Inscrire Un Nouveau Client</a>
+                        <a class="dropdown-item" href="@Url.Action("MajMembre", "Seke")">Modifier Un Membre</a>
+                        <a class="dropdown-item" href="@Url.Action("DeleteMembre", "Seke")">Supprimer un membre</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Gestion de Vente
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="InsertVente.html">Inserer une nouvelle vente</a>
+                        <a class="dropdown-item" href="ModifVente.html">Modifier une vente</a>
+                        <a class="dropdown-item" href="SuppVente.html">Supprimer une vente</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Gestion de  Location
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="InsertLocation.html">Inserer une nouvelle location</a>
+                        <a class="dropdown-item" href="ModifLocation.html">Modifier une location</a>
+                        <a class="dropdown-item" href="SuppLocation.html">Supprimer une location</a>
+                        <a class="dropdown-item" href="@Url.Action("suivilocation", "Seke")">Suivre Une Location</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Reservation
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="@Url.Action("reservation", "Seke")">Nouvelle reservation</a>
+
+                        <a class="dropdown-item" href="@Url.Action("AnnulerReser", "Seke")">Annuler Une Reservation </a>
+
+                        <a class="dropdown-item" href="@Url.Action("suivireservation", "Seke")">Suivre une reservation</a>
+
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Affichage
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="@Url.Action("ProfilAdmin", "Seke")">Voir Mon Profil</a>
+                        <a class="dropdown-item" href="@Url.Action("ListeUtilisateur", "Seke")">Liste de tous les Utilisateurs</a>
+                        <a class="dropdown-item" href="@Url.Action("test", "Seke")">Liste de toutes les Factures de  Reservations</a>
+                        <a class="dropdown-item" href="@Url.Action("locationfac", "Seke")">Liste de toutes les Factures d'achats/Location</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Autres Gestions
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="@Url.Action("Listeoldpic", "Seke")">Produits avec ancienne photo</a>
+                        <a class="dropdown-item" href="@Url.Action("presperimes", "Seke")">Produits bientot perimés</a>
+                        <a class="dropdown-item" href="@Url.Action("plusVendue", "Seke")">Les Produits les plus Vendus</a>
+                        <a class="dropdown-item" href="@Url.Action("moinsVendue", "Seke")">Les Produits les Moins Vendus</a>
+                        <a class="dropdown-item" href="@Url.Action("presfini", "Seke")">Les Produits presque fini</a>
+
+                    </div>
+                </li>
+                <li><a href="@Url.Action("Deconnexion", "Seke")">Se Deconnecter</a></li>
+            </ul>
+        </div>
+        <!-- Contact Info -->
+        <div class="menu_contact">
+        </div>
+    </div>
+
+    <div class="super_container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header_overlay"></div>
+            <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                <div class="logo">
+                    <a href="@Url.Action("IndexAdmin", "Seke")">
+                        <div class="d-flex flex-row align-items-center justify-content-start">
+                            <div><img src="../images/lg.png" alt="" style="weight:50px;height:50px;"></div>
+                            <div>Sèkè Informatique</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                <nav class="main_nav">
+                    <ul class="d-flex flex-row align-items-start justify-content-start">
+                    </ul>
+                </nav>
+                <div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
+                    <!-- Search -->
+                    <div class="header_search">
+                        @*// <form action="#" id="header_search_form">*@
+                        <input type="text" id="seke" class="search_input" placeholder="Chercher un produit" required="required" name="Name">
+                        <@*button class="header_search_button">*@<img src="../images/search.png" alt="">
+                        @*</form>*@
+                    </div>
+                    <!-- User -->
+                    <div class="cart"><a href="cart.html"><div><img class="svg" src="../images/cart.svg" alt="https://www.flaticon.com/authors/freepik"></div></a></div>
+                    <div class="user"><a href="@Url.Action("ProfilAdmin", "Seke")"><div><img src="../images/user.svg" alt="https://www.flaticon.com/authors/freepik"><div>1</div></div></a></div>
+
+                    <!--  Html.ActionLink("login", "login") -->
+                    <!-- Cart -->
+                    <!-- Phone -->
+                    <div class="header_phone d-flex flex-row align-items-center justify-content-start">
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        @if (ViewBag.reservationlist != null)
+        {
+
+            foreach (var item in ViewBag.reservationlist)
+            {
+                <div class="container d-flex justify-content-center mt-50 mb-50" id="testbody">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header bg-transparent header-elements-inline">
+                                    <h6 class="card-title">Seke-Informatique</h6>
+                                    <div class="header-elements"> <button type="button" class="btn btn-light btn-sm"><i class="fa fa-file mr-2"></i> Save</button> <button type="button" class="btn btn-light btn-sm ml-3"><i class="fa fa-print mr-2"></i> Print</button> </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4 pull-left">
+                                                <h5>Fait par L'Employes : </h5>
+                                                <h6> <u><strong>@item.CodeEmployes</strong></u></h6>
+                                                <h6> De L'entreprise </h6>
+                                                <h6><u><strong>Seke Informatique</strong></u></h6>
+                                                <ul class="list list-unstyled mb-0 text-left">
+                                                    <li><strong>7925 cote st-luc</strong></li>
+                                                    <li><strong>Canada, Montreal</strong></li>
+                                                    <li><strong>514-757-2894</strong></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4 ">
+                                                <div class="text-sm-right">
+                                                    <h4>Numero de Reservation : @item.NumeroR</h4>
+                                                    <ul class="invoice-color pt-lg-3 p-lg-2">
+                                                        <li>**********************************************************************************</li>
+                                                        <li>Date De Reservation: <span class="font-weight-semibold"> @item.DateReservation</span></li>
+                                                        <li>Date De Recuperation: <span class="font-weight-semibold">@item.DateRecuperation</span></li>
+                                                        <li>Date De Retour: <span class="font-weight-semibold">@item.DateRetour</span></li>
+                                                        <li>***********************************************************************************</li>
+                                                        <h10>*Si le produit n'est pas disponible ce jour, la reservation serait gratuite!</h10>
+                                                        <br />
+                                                        <h10ft>*Si le produit n'est pas retourné a son jour, un montant de 3% du prix total serait ajoute par jour! Apres une semaine, votre compte serait desactive</h10ft>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-md-flex flex-md-wrap">
+                                        <div class="mb-4 mb-md-2 text-left">
+                                            <span class="text-muted">***************************************:</span>
+                                            <ul class="list list-unstyled mb-0">
+
+                                                <li><span class="font-weight-semibold">Destine a :</span></li>
+                                                <li>@item.Nom</li>
+                                                <li>@item.Adresse</li>
+                                                <li>Montreal, Canada Qc</li>
+                                                <li>@item.Telephone</li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="mb-2 ml-auto">
+                                            <span class="text-muted">Details de paiement</span>
+                                            <div class="d-flex flex-wrap wmin-md-400">
+                                                <ul class="list list-unstyled mb-0 text-left">
+                                                    <li>
+                                                        <h5 class="my-2">TOTAL:</h5>
+                                                    </li>
+                                                    <li>Nom de Votre Bamque:</li>
+                                                    <li>Pays:</li>
+                                                    <li>Ville:</li>
+                                                    <li>NumeroCarte:</li>
+                                                    <li>Numero De Suivi De votre Produit:</li>
+                                                </ul>
+                                                <ul class="list list-unstyled text-right mb-0 ml-auto">
+                                                    <li>
+                                                        <h5 class="font-weight-semibold my-2">$@item.Ttc</h5>
+                                                    </li>
+                                                    <li><span class="font-weight-semibold">RBC BANQUE</span></li>
+                                                    <li>Canada</li>
+                                                    <li>Montreal</li>
+                                                    <li>***********5148</li>
+                                                    <li>@item.NumeroR</li>
+                                                    <li><span class="font-weight-semibold">Vous Pouvez annuler Votre Reservation</span></li>
+                                                    <li><span class="font-weight-semibold">Apres les 3 premiers jours de la date de reservation</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-lg">
+                                        <thead>
+                                            <tr>
+                                                <th>Nom</th>
+                                                <th>prix</th>
+                                                <th>quantite</th>
+                                                <th>Rabais Membre</th>
+
+
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <span class="text-muted">@item.NomProduit</span>
+                                                </td>
+                                                <td>@item.PrixReserve</td>
+                                                <td>@item.QuantiteReserve</td>
+                                                <td> - @item.Rabais</td>
+                                                <td><span class="font-weight-semibold">@item.Montant</span></td>
+                                            </tr>
+                                            @*<tr>
+                                                    <td>
+                                                        <h6 class="mb-0">Template for desnging the arts</h6> <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
+                                                    </td>
+                                                    <td>$140</td>
+                                                    <td>100</td>
+                                                    <td><span class="font-weight-semibold">$240</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h6 class="mb-0">Technical support international</h6> <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
+                                                    </td>
+                                                    <td>$250</td>
+                                                    <td>$250</td>
+                                                    <td><span class="font-weight-semibold">$500</span></td>
+                                                </tr>*@
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-md-flex flex-md-wrap">
+                                        <div class="pt-2 mb-3 wmin-md-400 ml-auto">
+                                            <h6 class="mb-3 text-left">Total due</h6>
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th class="text-left">Subtotal:</th>
+                                                            <td class="text-right">@item.Montant $</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="text-left">Tax: <span class="font-weight-normal">(15%)</span></th>
+                                                            <td class="text-right">@item.Taxe %</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="text-left">Total:</th>
+                                                            <td class="text-right text-primary">
+                                                                <h5 class="font-weight-semibold">@item.Ttc $</h5>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            @*<div class="col-md-12">
+                                                <button type="button" class="btn btn-lg btn-success" data-toggle="modal" data-target="#exampleModal">
+                                                    Envoyer La Facture
+                                                </button>*@
+                                            <div class="text-right mt-3">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><b><i class="fa fa-paper-plane-o mr-1"></i></b>Envoyer Facture Via Email</button>
+                                            </div>
+                                            @*</div>*@
+                                            <div class="modal fade mt-3" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content pl-2">
+                                                        <div class="modal-header py-0"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div>
+                                                        <div class="container d-flex justify-content-center">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <h2 class="title pl-3 pt-0 pb-3">Envoie de la facture </h2>
+                                                                    <div class="form-group col-md-12"> <input type="text" class="form-control" disabled placeholder="@item.Code"> </div>
+                                                                    <div class="form-group col-md-12"> <input type="email" class="form-control" disabled placeholder="sackologie223@gmail.com"> </div>
+                                                                    <div class="form-group col-md-12"> <input type="text" class="form-control" placeholder="Message"> </div>
+                                                                    <div class="form-group col-md-12"> @*<button class="btn btn-dark btn-block" onclick="myFunction()">Send</button>*@ <button class="btn btn-dark btn-block" onclick="myFunction()">Envoyer</button> </div>
+                                                                </div>
+                                                                <div class="col-md-6"> <img src="../images/lg.png" width="100%" height="100%"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @*<div class="text-right mt-3"> <button type="button" onclick="showAlert();" class="btn btn-primary"><b><i class="fa fa-paper-plane-o mr-1"></i></b>Envoyer Facture Via Email</button> </div>*@
+                                            @*<button value="showAlert" onclick="showAlert();"> Show Alert</button>*@
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+                <script src="../js/jquery-3.2.1.min.js"></script>
+                <script src="../styles/bootstrap-4.1.2/popper.js"></script>
+                <script src="../styles/bootstrap-4.1.2/bootstrap.min.js"></script>
+                <script src="../plugins/greensock/TweenMax.min.js"></script>
+                <script src="../plugins/greensock/TimelineMax.min.js"></script>
+                <script src="../plugins/scrollmagic/ScrollMagic.min.js"></script>
+                <script src="../plugins/greensock/animation.gsap.min.js"></script>
+                <script src="../plugins/greensock/ScrollToPlugin.min.js"></script>
+                <script src="../plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+                <script src="../plugins/easing/easing.js"></script>
+                <script src="../plugins/progressbar/progressbar.min.js"></script>
+                <script src="../plugins/parallax-js-master/parallax.min.js"></script>
+                <script src="../js/custom.js"></script>
+
+                <script>
+                    $(document).ready(function () {
+                        $("#seke").keyup(function () {
+                            //$("#loader").show();
+                            var searchtext = $(this).val();
+                            debugger
+
+                            $.ajax({
+                                type: "Post",
+                                url: "/Seke/GetSearchRecord3?SearchText=" + searchtext,
+                                contentType: "html",
+                                success: function (response) {
+                                    //$("#loader").hide();
+                                    $("#testbody").html(response);
+
+                                },
+                                error: function () {
+                                    alert("actualier page");
+                                }
+                            });
+                        });
+                    });
+                </script>
+
+
+
+            }
+
+        }
+        <script>
+            function myFunction() {
+                alert("La facture a ete bien envoyee a l'expediateur! Vous Pouvez egalement lui imprimer la facture!");
+            }
+        </script>
+</body>
+</html >

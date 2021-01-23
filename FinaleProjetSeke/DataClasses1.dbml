@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SekeDATA" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SekeDATA.mdf;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SekeDATAConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.EmployesSupprimes" Member="EmployesSupprimes">
+    <Type Name="EmployesSupprime">
+      <Column Name="CodeEmployes" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Prenom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Rue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ville" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Statut" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Photo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateSuppression" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="MotifSuppression" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DateEmbauche" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UtilisateurSupprimes" Member="UtilisateurSupprimes">
+    <Type Name="UtilisateurSupprime">
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Prenom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Rue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ville" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Statut" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Photo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MotifSuppression" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DateSuppression" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Utilisateur" Member="Utilisateurs">
+    <Type Name="Utilisateur">
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Prenom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Rue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ville" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Statut" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Photo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MotifSuppression" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DateSuppression" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Utilisateur_Reservation" Member="Reservations" ThisKey="Code" OtherKey="Code" Type="Reservation" />
+      <Association Name="Utilisateur_location" Member="location" ThisKey="Code" OtherKey="Code" Type="location" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employes" Member="Employes">
+    <Type Name="Employe">
+      <Column Name="CodeEmployes" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Prenom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Rue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ville" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Statut" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Photo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateSuppression" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="MotifSuppression" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DateEmbauche" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Employe_Reservation" Member="Reservations" ThisKey="CodeEmployes" OtherKey="CodeEmployes" Type="Reservation" />
+      <Association Name="Employe_location" Member="location" ThisKey="CodeEmployes" OtherKey="CodeEmployes" Type="location" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Reservation" Member="Reservations">
+    <Type Name="Reservation">
+      <Column Name="NumeroR" Type="System.String" DbType="NVarChar(53) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Adresse" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Msg" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DateReservation" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DateRetour" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DateRecuperation" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NumeroCard" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NomProduit" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CodeEmployes" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PrixReserve" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QuantiteReserve" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Montant" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Taxe" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Ttc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Rabais" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CodeProduit" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Employe_Reservation" Member="Employe" ThisKey="CodeEmployes" OtherKey="CodeEmployes" Type="Employe" IsForeignKey="true" />
+      <Association Name="Utilisateur_Reservation" Member="Utilisateur" ThisKey="Code" OtherKey="Code" Type="Utilisateur" IsForeignKey="true" />
+      <Association Name="Produit_Reservation" Member="Produit" ThisKey="CodeProduit" OtherKey="CodeProduit" Type="Produit" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Admin" Member="Admins">
+    <Type Name="Admin">
+      <Column Name="CodeAdmin" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Prenom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Rue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ville" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Statut" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Photo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateSuppression" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="MotifSuppression" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DateEmbauche" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProduitSupprimes" Member="ProduitSupprimes">
+    <Type Name="ProduitSupprime">
+      <Column Name="CodeProduit" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PrixAchat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PrixAncien" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QuantiteStock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Photo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Note" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="RabaisVente" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RabaisLocation" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="DateSortie" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Category" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MotifSuppression" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.location" Member="location">
+    <Type Name="location">
+      <Column Name="CodeLocation" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CodeProduit" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DateLocation" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DateRetour" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DateRetoureff" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CodeEmployes" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PrixLocation" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QuantiteLocation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rabais" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Taxe" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalHT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Ttc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FraisRetard" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PenaliteJour" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NomProduit" Type="System.String" DbType="NVarChar(53)" CanBeNull="true" />
+      <Column Name="NomLocataire" Type="System.String" DbType="NVarChar(53)" CanBeNull="true" />
+      <Association Name="Employe_location" Member="Employe" ThisKey="CodeEmployes" OtherKey="CodeEmployes" Type="Employe" IsForeignKey="true" />
+      <Association Name="Utilisateur_location" Member="Utilisateur" ThisKey="Code" OtherKey="Code" Type="Utilisateur" IsForeignKey="true" />
+      <Association Name="Produit_location" Member="Produit" ThisKey="CodeProduit" OtherKey="CodeProduit" Type="Produit" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Produit" Member="Produit">
+    <Type Name="Produit">
+      <Column Name="CodeProduit" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PrixAchat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PrixAncien" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PrixLoc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QuantiteStock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Photo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Note" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="RabaisVente" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RabaisLocation" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="DateSortie" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Category" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MotifSuppression" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="[Desc]" Member="Desc" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Produit_Reservation" Member="Reservation" ThisKey="CodeProduit" OtherKey="CodeProduit" Type="Reservation" />
+      <Association Name="Produit_location" Member="location" ThisKey="CodeProduit" OtherKey="CodeProduit" Type="location" />
+      <Association Name="Produit_Vente" Member="Vente" ThisKey="CodeProduit" OtherKey="CodeProduit" Type="Vente" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Vente" Member="Vente">
+    <Type Name="Vente">
+      <Column Name="IdVente" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CodeProduit" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DateVente" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CodeEmployes" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PrixVente" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QuantiteVente" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rabais" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Taxe" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalHT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Ttc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NomProduit" Type="System.String" DbType="NVarChar(53)" CanBeNull="true" />
+      <Column Name="NomMembre" Type="System.String" DbType="NVarChar(53)" CanBeNull="true" />
+      <Column Name="Montant" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="StatutP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Produit_Vente" Member="Produit" ThisKey="CodeProduit" OtherKey="CodeProduit" Type="Produit" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
